@@ -1,0 +1,26 @@
+# ignore python cache files
+__pycache__/
+*.py[cod]
+
+# ignore environment files
+.env/
+env/
+venv/
+.conda/
+
+# ignore conda env file
+env.yml
+
+# ignore jupyter notebook checkpoints
+.ipynb_checkpoints
+
+# ignore any CSV or data files
+*.CSV
+*.tar.gz
+
+# ignore log files
+*.log
+
+# ignore zone.identifier files
+
+*.zone.identifier
