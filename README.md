@@ -34,7 +34,3 @@ The following techniques have been used:
  
  - use below command
    `python < scriptname.py >` [change the scriptname with nonstandardcode.py]
-
-
-
-
