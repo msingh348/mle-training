@@ -4,8 +4,9 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import os
 import tarfile
-from six.moves import urllib
-
+# from six.moves import urllib
+import urllib
+import urllib.request
 
 DOWNLOAD_ROOT = "https://raw.githubusercontent.com/ageron/handson-ml/master/"
 HOUSING_PATH = os.path.join("datasets", "housing")
@@ -19,13 +20,18 @@ def fetch_housing_data(housing_url=HOUSING_URL, housing_path=HOUSING_PATH):
     housing_tgz.extractall(path=housing_path)
     housing_tgz.close()
 
-import pandas as pd
 
 def load_housing_data(housing_path=HOUSING_PATH):
     csv_path = os.path.join(housing_path, "housing.csv")
+    # print(csv_path)
     return pd.read_csv(csv_path)
 
-housing = load_housing_data
+# Fetch the housing data
+fetch_housing_data()
+
+# Now load the housing data
+housing = load_housing_data()
+# print(housing['ocean_proximity'].unique)
 
 from sklearn.model_selection import train_test_split
 
@@ -63,7 +69,10 @@ housing = strat_train_set.copy()
 housing.plot(kind="scatter", x="longitude", y="latitude")
 housing.plot(kind="scatter", x="longitude", y="latitude", alpha=0.1)
 
+# Select only numeric columns for correlation matrix
+housing = housing.select_dtypes(include=[np.number])
 corr_matrix = housing.corr()
+
 corr_matrix["median_house_value"].sort_values(ascending=False)
 housing["rooms_per_household"] = housing["total_rooms"]/housing["households"]
 housing["bedrooms_per_room"] = housing["total_bedrooms"]/housing["total_rooms"]
