@@ -1,6 +1,8 @@
-numpy
 pandas
+matplotlib
 scikit-learn
-flake8
 black
 isort
+flake8
+numpy
+
