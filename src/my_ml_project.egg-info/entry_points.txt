@@ -1,0 +1,4 @@
+[console_scripts]
+ingest_data = ingest_data:main
+score = scoring:main
+train = training:main

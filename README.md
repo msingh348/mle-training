@@ -1,36 +1,144 @@
+# My ML Project
 
-# 1. Project Description
-## Predicting the Median housing values for different households
-### The project aims to develop a predictive model for estimating the Median House Value based on various features related to housing characteristics and geographic location.
+This project implements a machine learning pipeline that involves data ingestion, model training, and evaluation. It follows a structured layout using the src folder and can be easily packaged and installed as a Python library.
 
-### The primary objective for this project is to build a regression model that accurately predicts the Median House Value based on different features.
+## Table of Contents
 
-The housing data can be downloaded from https://raw.githubusercontent.com/ageron/handson-ml/master/. The script has codes to download the data. We have modelled the median house value on given housing data. 
+- Installation
 
-The following techniques have been used: 
+- Usage
 
- - Linear regression
- - Decision Tree
- - Random Forest
+    - Data Ingestion
+    - Model Training
+    - Model Scoring
 
-## Steps performed
- - We prepare and clean the data. We check and impute for missing values.
- - Features are generated and the numerical variables are checked for correlation.
- - Multiple sampling techinuqies are evaluated. The data set is split into train and test.
- - All the above said modelling techniques are tried and evaluated. The final metric used to evaluate is mean squared error.
+- Logging
+
+- Tests
+
+- Documentation
+
+- Contributing
+
+## Installation
+
+1. Clone the repository:
+
+```
+git clone https://github.com/msingh348/mle-training.git
+cd my_ml_project
+
+```
+
+2. Create a conda environment: The project dependencies are listed in the env.yaml file. You can create the environment using the following command:
+
+```
+conda env create -f env.yaml
+
+```
+
+3. Activate the environment:
+
+```
+conda activate my_ml_env
+```
+
+4. Install the project as a package: You can install the project locally as a package using `pip`:
+
+```
+pip install -e .
+```
 
 
-# 2. Command to create environment from env.yml file
+## Usage
 
- - You can use below command
-   `conda env create -f env.yml`
+## Data Ingestion
 
-# 3. Command to activate the environment
+To download the dataset and process it for training and validation, use the ingest_data.py script:
 
- - use this
-   `conda activate mle-dev`
+```
+python src/ingest_data.py --output-dir data/processed
+```
 
-# 4. To excute the script
- 
- - use below command
-   `python < scriptname.py >` [change the scriptname with nonstandardcode.py]
+This will save the processed data in the data/processed/ directory. By default, it downloads the dataset and splits it into training and validation sets.
+
+
+## Model Training
+
+To train the machine learning models, run the train.py script:
+
+```
+python src/train.py --input-file data/processed/train.csv --model-output-dir artifacts/models
+
+```
+
+This will create a artifacts/models/ directory containing trained models like `linear_model.pkl`, `tree_model.pkl`, and `best_forest_model.pkl`.
+
+
+## Model Scoring
+
+To evaluate the trained models on the validation data, use the score.py script:
+
+```
+python src/score.py --input-file data/processed/validation.csv --model-dir artifacts/models
+
+```
+
+The script will output performance metrics for each model.
+
+## Logging
+
+Logging is enabled for all scripts, and you can configure the log level, output file, and whether to display logs on the console. By default, logs are saved to the logs/ directory.
+
+You can customize logging options by passing these arguments:
+
+- --log-level (e.g., INFO, DEBUG)
+
+- --log-file (to specify the log file)
+
+- --no-console-log (to disable console logging)
+
+```
+python src/train.py --input-file data/processed/train.csv --model-output-dir artifacts/models --log-level DEBUG --log-file logs/train.log
+
+```
+
+## Tests
+
+Unit and functional tests are included to verify the correctness of the code. You can run them using `pytest`:
+
+```
+pytest
+
+```
+
+The tests are located in the `tests/` directory and cover the following:
+
+- `unit_tests/`: Unit tests for specific functions like data ingestion.
+
+- `functional_tests/`: Tests to verify the overall workflow such as model training.
+
+## Documentation:
+
+The project uses Sphinx for documentation generation. To build the HTML documentation, follow these steps:
+
+1. Install Sphinx (if not already installed):
+
+```
+pip install sphinx
+
+```
+
+2. Generate the documentation:
+
+```
+cd docs
+make html
+
+```
+
+The generated documentation will be available in the `docs/_build/html/` directory.
+
+## Contributing
+
+Feel free to open issues or create pull requests if you'd like to contribute to this project.
