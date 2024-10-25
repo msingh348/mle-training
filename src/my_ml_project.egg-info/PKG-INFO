@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: my_ml_project
+Version: 0.1.0
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: scikit-learn
+Requires-Dist: argparse
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: pytest
+Requires-Dist: black
+Requires-Dist: isort
+Requires-Dist: flake8

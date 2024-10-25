@@ -8,9 +8,6 @@ env/
 venv/
 .conda/
 
-# ignore conda env file
-env.yml
-
 # ignore jupyter notebook checkpoints
 .ipynb_checkpoints
 
@@ -19,8 +16,12 @@ env.yml
 *.tar.gz
 
 # ignore log files
+logs/
 *.log
 
-# ignore zone.identifier files
+# Ignore large model files
+artifacts/*.pkl
+models/*.pkl
 
+# ignore zone.identifier files
 *.zone.identifier
