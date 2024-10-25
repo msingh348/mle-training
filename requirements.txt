@@ -1,9 +1,12 @@
-numpy
 pandas
 matplotlib
 seaborn
+matplotlib
 scikit-learn
 black
 isort
 flake8
 sphinx
+flake8
+numpy
+
